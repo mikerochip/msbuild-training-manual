@@ -17,14 +17,16 @@ MSBuild only has a couple of "nouns"
 * Predefined Elements
   * Part of MSBuild's XML Schema
   * Let you group and define Properties
+  * e.g. `Project`, `PropertyGroup`, `ItemGroup`, `Target`, etc.
 * Properties
-  * Fancy word for child XML elements (that aren't Tasks)
+  * Fancy word for variables AFAICT
+  * Are the child elements of `PropertyGroup` and `ItemGroup`
   * Are a mix of predefined and user-defined
-  * Use user-defined properties
 
 MSBuild only has one "verb"
 
 * Tasks
+  * Are the child elements of the predefined element `Target`
   * Are how you define custom behavior in MSBuild
   * Are a special case of predefined element that show up under Target elements
   * The order of Tasks underneath a Target determines their sequence
@@ -35,7 +37,7 @@ MSBuild only has one "verb"
 
 ### Usage
 
-Define single-value variables via xml inner text.
+Define single-value properties in the xml inner text.
 
 ### Example
 
@@ -50,7 +52,7 @@ Define single-value variables via xml inner text.
 
 ### Usage
 
-Define multi-value variables via xml attribute values.
+Define multi-value properties in xml attributes.
 
 Think of this as a way to declare and assign data to a collection.
 
@@ -87,6 +89,8 @@ The main trick to getting your Targets to execute when you want is to combine th
   * e.g. `$([System.IO.Path]::GetFullPath('$(DirPath)'))`
 * The `Message` element's `Importance` attribute must be set to `High` in order to see your output in your IDE's Output window
 * The "macro" `%(RecursiveDir)` is super useful in the Copy task's `DestinationFolder` value. It will mirror whatever directory structure exists in your `SourceFiles` value
+* The `$` symbol evaluates a property into its value (like a shell script)
+* The `@` symbol returns the elements of an ItemGroup property (which are multi-value data containers)
 
 
 # Reference
