@@ -1,3 +1,13 @@
+First Published
+Apr 4, 2023
+Using MSBuild 17.0
+
+# Welcome
+
+This is basically my cheat sheet of things I probably will forget and need a periodic reminder of for making MSBuild Targets.
+
+Usually I do this when I want to copy files as part of a build process. Maybe you need to do the same thing!
+
 # Concepts
 
 ## `PropertyGroup`
@@ -66,9 +76,9 @@ You'll want to comebine the attribute keys on [this page](https://learn.microsof
   * This page is a super helpful primer on how to write custom targets.
   * If you read nothing else, then read this!
 * [Reserved and Well-known Properties](https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild-reserved-and-well-known-properties)
-  * aka "reserved keywords"
+  * aka list of "reserved keywords"
 * [Well-known Item Metadata](https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild-well-known-item-metadata)
-  * aka "built-in macros"
+  * aka list of "built-in macros"
 * [Target Build Order](https://learn.microsoft.com/en-us/visualstudio/msbuild/target-build-order)
 
 ## API Reference
