@@ -12,14 +12,24 @@ This document is a cheat sheet of things that are easy to forget about MSBuild P
 
 # Concepts
 
-MSBuild is com
+MSBuild only has a couple of "nouns"
 
-* Elements
+* Predefined Elements
+  * Part of MSBuild's XML Schema
+  * Let you group and define Properties
 * Properties
+  * Fancy word for child XML elements (that aren't Tasks)
+  * Are a mix of predefined and user-defined
+  * Use user-defined properties
 
-An Element
+MSBuild only has one "verb"
 
-# Elements
+* Tasks
+  * Are how you define custom behavior in MSBuild
+  * Are a special case of predefined element that show up under Target elements
+  * The order of Tasks underneath a Target determines their sequence
+  
+# Useful Predefined Elements
 
 ## `PropertyGroup`
 
@@ -96,4 +106,5 @@ The main trick to getting your Targets to execute when you want is to combine th
 
 ## API Reference
 
+* [Task Reference](https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild-task-reference)
 * [Target Element](https://learn.microsoft.com/en-us/visualstudio/msbuild/target-element-msbuild)
