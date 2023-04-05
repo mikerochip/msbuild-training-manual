@@ -1,4 +1,6 @@
-First Published\
+# Mike's MSBuild Training Manual
+
+#### First Published
 Apr 4, 2023\
 Using MSBuild 17.0
 
@@ -37,7 +39,7 @@ MSBuild only has one "verb"
 
 ### Usage
 
-Define single-value properties in the xml inner text.
+Define one or more single-value properties. Values are defined in xml inner text.
 
 ### Example
 
@@ -52,9 +54,9 @@ Define single-value properties in the xml inner text.
 
 ### Usage
 
-Define multi-value properties in xml attributes.
+Define one or more multi-value properties. Values are defined in xml attributes.
 
-Think of this as a way to declare and assign data to a collection.
+Think of this as a way to define collection variables.
 
 ### Example
 
