@@ -14,7 +14,7 @@ Usually I do this when I want to copy files as part of a build process. Maybe yo
 
 ### Usage
 
-Define single-value variables.
+Define single-value variables via xml inner text.
 
 ### Example
 
@@ -29,9 +29,9 @@ Define single-value variables.
 
 ### Usage
 
-Define multi-value variables.
+Define multi-value variables via xml attribute values.
 
-Very useful for declaring and assigning data to collections.
+Think of this as a way to declare and assign data to a collection.
 
 ### Example
 
@@ -45,9 +45,9 @@ Very useful for declaring and assigning data to collections.
 
 ### Usage
 
-Define a set of tasks to execute. These will mostly be what you want to write.
+Define a set of tasks to execute. These will mostly be what you want to work with.
 
-You'll want to comebine the attribute keys on [this page](https://learn.microsoft.com/en-us/visualstudio/msbuild/target-build-order) with the attribute values on [this page](https://learn.microsoft.com/en-us/visualstudio/msbuild/how-to-extend-the-visual-studio-build-process) to determine when your tasks execute.
+The main trick to getting your Targets to execute when you want is to combine the attribute keys on [this page](https://learn.microsoft.com/en-us/visualstudio/msbuild/target-build-order) with the attribute values on [this page](https://learn.microsoft.com/en-us/visualstudio/msbuild/how-to-extend-the-visual-studio-build-process).
 
 ### Example
 
