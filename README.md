@@ -28,7 +28,7 @@ MSBuild only has a couple of "nouns"
 MSBuild only has one "verb"
 
 * Tasks
-  * Are the child elements of the predefined element `Target`
+  * Can only be child elements of the predefined element `Target`
   * Are how you define custom behavior in MSBuild
   * Are a special case of predefined element that show up under Target elements
   * The order of Tasks underneath a Target determines their sequence
@@ -71,6 +71,8 @@ Think of this as a way to define collection variables.
 ### Usage
 
 Define a set of tasks to execute. These will mostly be what you want to work with.
+
+Note that child elements of Target can be a mix of Tasks, PropertyGroups, etc
 
 The main trick to getting your Targets to execute when you want is to combine the attribute keys on [this page](https://learn.microsoft.com/en-us/visualstudio/msbuild/target-build-order) with the attribute values on [this page](https://learn.microsoft.com/en-us/visualstudio/msbuild/how-to-extend-the-visual-studio-build-process).
 
