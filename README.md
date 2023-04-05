@@ -50,11 +50,12 @@ You'll want to comebine the attribute keys on [this page](https://learn.microsof
 </Target>
 ```
 
-# Mojo
+# Assorted Mojo
 
 * You can use the dotnet Base Class Library in your attribute values! Example above
   * e.g. `$([System.IO.Path]::GetFullPath('$(DirPath)'))`
 * The `Message` element's `Importance` attribute of must be set to `High` in order to see your output in your IDE's Output window
+* The "macro" `%(RecursiveDir)` is super useful in the Copy task's `DestinationFolder` value. It will mirror whatever directory structure exists in your `SourceFiles` value
 
 
 # Reference
