@@ -4,11 +4,22 @@ Using MSBuild 17.0
 
 # Welcome
 
-This is basically my cheat sheet of things I probably will forget and need a periodic reminder of for making MSBuild Targets.
+MSBuild is the dotnet build system. It works by processing these things called Project Files (`*.csproj`, `*.vcproj`, etc) which tell MSBuild what to do.
 
-Usually I do this when I want to copy files as part of a build process. Maybe you need to do the same thing!
+Microsoft has put in a lot of good defaults to MSBuild, which is awesome until I need to modify it and forget how to do so. Usually, my use case is copying some custom data or binaries as part of a build.
+
+This document is a cheat sheet of things that are easy to forget about MSBuild Project Files.
 
 # Concepts
+
+MSBuild is com
+
+* Elements
+* Properties
+
+An Element
+
+# Elements
 
 ## `PropertyGroup`
 
@@ -77,6 +88,8 @@ The main trick to getting your Targets to execute when you want is to combine th
   * If you read nothing else, then read this!
 * [Reserved and Well-known Properties](https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild-reserved-and-well-known-properties)
   * aka list of "reserved keywords"
+* [Common MSBuild Project Properties](https://learn.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-properties)
+  * list of out of the box properties, along with Project Types that they are available in
 * [Well-known Item Metadata](https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild-well-known-item-metadata)
   * aka list of "built-in macros"
 * [Target Build Order](https://learn.microsoft.com/en-us/visualstudio/msbuild/target-build-order)
