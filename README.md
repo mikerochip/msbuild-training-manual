@@ -96,7 +96,6 @@ The main trick to getting your Targets to execute when you want is to combine th
 * The `$` symbol evaluates a property into its value (like a shell script)
 * The `@` symbol returns the elements of an ItemGroup property (which are multi-value data containers)
 
-
 # Reference
 
 ## Learning and HOWTOs
@@ -108,11 +107,13 @@ The main trick to getting your Targets to execute when you want is to combine th
   * aka list of "reserved keywords"
 * [Common MSBuild Project Properties](https://learn.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-properties)
   * list of out of the box properties, along with Project Types that they are available in
+* [MSBuild properties for Microsoft.NET.Sdk](https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props)
+  * list of `dotnet`-specific extensions to MSBuild (as opposed to C++)
 * [Well-known Item Metadata](https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild-well-known-item-metadata)
   * aka list of "built-in macros"
-* [Target Build Order](https://learn.microsoft.com/en-us/visualstudio/msbuild/target-build-order)
 
 ## API Reference
 
 * [Task Reference](https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild-task-reference)
+  * List of Task-type elements and their parameters
 * [Target Element](https://learn.microsoft.com/en-us/visualstudio/msbuild/target-element-msbuild)
