@@ -101,18 +101,35 @@ The main trick to getting your Targets to execute when you want is to combine th
 
 # HOWTO
 
-#### Copy files from an external data folder
+#### Copy files from an external data folder for builds but also make it work in the IDE
 ```
 <!-- put your source folder in a top-level PropertyGroup so you can set it as a parameter -->
 <PropertyGroup>
     <MyExternalDataPath>..\..\MyData</MyExternalDataPath>
+    <MyDataDirName>MyData</MyDataDirName>
 </PropertyGroup>
 
 <ItemGroup>
-    <Content LinkBase="FolderNameInIDE" Include="$(MyExternalDataPath)\**"
+    <!-- exclude project data since that's just for running in IDE -->
+    <Content Remove="$(MyDataDirName)\**" />
+
+    <!-- copy source data straight into builds -->
+    <Content LinkBase="$(MyDataDirName)" Include="$(MyExternalDataPath)\**"
              CopyToOutputDirectory="Always"
              CopyToPublishDirectory="Always" />
 </ItemGroup>
+
+<Target Name="CopyDataToProject" BeforeTargets="Build">
+    <!-- delete first since the project data might be stale -->
+    <RemoveDir Directories="$(MyDataDirName)" />
+
+    <ItemGroup>
+        <MyExternalDataFiles Include="$(MyExternalDataPath)\**\*.*" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(MyExternalDataFiles)"
+          DestinationFolder="$(MyDataDirName)\%(RecursiveDir)" />
+</Target>
 ```
 
 #### Include a local data directory as reference in your IDE (and exclude from builds)
