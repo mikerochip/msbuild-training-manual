@@ -6,32 +6,34 @@ Using MSBuild 17.0
 
 # Welcome
 
-MSBuild is Microsoft's declarative XML-based build system. It works by processing XML Project Files (`*.csproj`, `*.vcproj`, etc) which tell MSBuild what to do.
+MSBuild is Microsoft's declarative XML-based build system for `dotnet` and C++ projects.
 
-Microsoft has put in a lot of sensible defaults to MSBuild, which is awesome until I need to modify it and forget how to do so. Usually, my use case is copying some custom data or binaries as part of a build.
+It works by processing XML Project Files (`*.csproj`, `*.vcproj`, etc) which tell MSBuild what to do.
+
+Microsoft has put in a lot of sensible defaults to keep project files from being bloated, which is awesome until I need to modify it and forget how to do so. Usually, my use case is copying some custom data or binaries as part of a build.
 
 This document is a cheat sheet of things that are easy to forget about MSBuild Project Files.
 
 # Concepts
 
-MSBuild only has a couple of "nouns"
+MSBuild only has a couple of "nouns." Targets are where the magic of build steps (called Tasks) happens. Everything outside of Targets is where you configure things for your targets.
 
 * Predefined Elements
-  * Part of MSBuild's XML Schema
+  * Make up most of MSBuild's XML Schema
   * Let you group and define Properties
-  * e.g. `Project`, `PropertyGroup`, `ItemGroup`, `Target`, etc.
+  * Let you sequence `Task`s within a `Target` (more on Targets below)
+  * e.g. `Project`, `PropertyGroup`, `ItemGroup`, `Target`, `Content`, etc.
 * Properties
   * Fancy word for variables AFAICT
   * Are the child elements of `PropertyGroup` and `ItemGroup`
   * Are a mix of predefined and user-defined
 
-MSBuild only has one "verb"
+MSBuild only has one "verb" and that's Tasks.
 
 * Tasks
   * Can only be child elements of the predefined element `Target`
-  * Are how you define custom behavior in MSBuild
-  * Are a special case of predefined element that show up under Target elements
-  * The order of Tasks underneath a Target determines their sequence
+  * Are how you make magic happen in MSBuild
+  * The order of Tasks inside a Target determines their execution order
   
 # Useful Predefined Elements
 
@@ -95,6 +97,7 @@ The main trick to getting your Targets to execute when you want is to combine th
 * The "macro" `%(RecursiveDir)` is super useful in the Copy task's `DestinationFolder` value. It will mirror whatever directory structure exists in your `SourceFiles` value
 * The `$` symbol evaluates a property into its value (like a shell script)
 * The `@` symbol returns the elements of an ItemGroup property (which are multi-value data containers)
+* At the top-level (i.e. Project element), PropertyGroups ALL evaluate before ItemGroups. Within a Target it's ordered from top to bottom.
 
 # HOWTO
 
