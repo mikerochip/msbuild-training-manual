@@ -134,7 +134,7 @@ The main trick to getting your Targets to execute when you want is to combine th
 <ItemGroup>
     <!-- if MyDataPath is inside your project, then this removes it -->
     <Content Remove="$(MyDataPath)\**" />
-    <None LinkBase="FolderNameInIDE" Include="$(MyDataPath)\**" />
+    <None LinkBase="FolderNameInIDE" Include="$(MyDataPath)\**" CopyToOutputDirectory="Never" />
 </ItemGroup>
 ```
 
