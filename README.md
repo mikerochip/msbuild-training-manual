@@ -105,39 +105,26 @@ The main trick to getting your Targets to execute when you want is to combine th
 ```
 <!-- put your source folder in a top-level PropertyGroup so you can set it as a parameter -->
 <PropertyGroup>
-    <MySourceDataPath>..\..\MyData</MySourceDataPath>
+    <MyExternalDataPath>..\..\MyData</MyExternalDataPath>
 </PropertyGroup>
 
-<Target Name="CopyMyData" AfterTargets="Build">
-  <!-- $(OutputPath) is only valid inside a Target -->
-  <PropertyGroup>
-      <MyOutputDataPath>$(OutputPath)MyData</MyOutputDataPath>
-  </PropertyGroup>
-  
-  <!-- delete your previous dir since source data files may have changed -->
-  <RemoveDir Directories="$(MyOutputDataPath)" />
-  
-  <!-- this could be outside the Target -->
-  <ItemGroup>
-      <MySourceDataFiles Include="$(MySourceDataPath)\**\*.*" />
-  </ItemGroup>
-  
-  <Copy SourceFiles="@(MySourceDataFiles)"
-        DestinationFolder="$(MyOutputDataPath)\%(RecursiveDir)" />
-</Target>
+<ItemGroup>
+    <Content LinkBase="FolderNameInIDE" Include="$(MyExternalDataPath)\**"
+             CopyToOutputDirectory="Always"
+             CopyToPublishDirectory="Always" />
+</ItemGroup>
 ```
 
-#### Include a data directory as reference in your IDE (and exclude from builds)
+#### Include a local data directory as reference in your IDE (and exclude from builds)
 ```
-<!-- put your source folder in a top-level PropertyGroup so you can set it as a parameter -->
 <PropertyGroup>
-    <MyDataPath>MyData</MyDataPath>
+    <MyLocalDataPath>MyData</MyLocalDataPath>
 </PropertyGroup>
 
 <ItemGroup>
     <!-- if MyDataPath is inside your project, then this removes it -->
-    <Content Remove="$(MyDataPath)\**" />
-    <None LinkBase="FolderNameInIDE" Include="$(MyDataPath)\**" CopyToOutputDirectory="Never" />
+    <Content Remove="$(MyLocalDataPath)\**" />
+    <None LinkBase="FolderNameInIDE" Include="$(MyLocalDataPath)\**" CopyToOutputDirectory="Never" />
 </ItemGroup>
 ```
 
