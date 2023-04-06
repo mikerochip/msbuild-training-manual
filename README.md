@@ -6,9 +6,9 @@ Using MSBuild 17.0
 
 # Welcome
 
-MSBuild is the dotnet build system. It works by processing these things called Project Files (`*.csproj`, `*.vcproj`, etc) which tell MSBuild what to do.
+MSBuild is Microsoft's declarative XML-based build system. It works by processing XML Project Files (`*.csproj`, `*.vcproj`, etc) which tell MSBuild what to do.
 
-Microsoft has put in a lot of good defaults to MSBuild, which is awesome until I need to modify it and forget how to do so. Usually, my use case is copying some custom data or binaries as part of a build.
+Microsoft has put in a lot of sensible defaults to MSBuild, which is awesome until I need to modify it and forget how to do so. Usually, my use case is copying some custom data or binaries as part of a build.
 
 This document is a cheat sheet of things that are easy to forget about MSBuild Project Files.
 
