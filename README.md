@@ -96,7 +96,7 @@ The main trick to getting your Targets to execute when you want is to combine th
 * The `$` symbol evaluates a property into its value (like a shell script)
 * The `@` symbol returns the elements of an ItemGroup property (which are multi-value data containers)
 
-# HOWTOs
+# HOWTO
 
 #### Copy files from an external data folder
 ```
@@ -132,7 +132,7 @@ The main trick to getting your Targets to execute when you want is to combine th
 </PropertyGroup>
 
 <ItemGroup>
-    <!-- if MySourceDataPath is inside your project, then this removes it -->
+    <!-- if MyDataPath is inside your project, then this removes it -->
     <Content Remove="$(MyDataPath)\**" />
     <None LinkBase="FolderNameInIDE" Include="$(MyDataPath)\**" />
 </ItemGroup>
