@@ -128,9 +128,9 @@ The main trick to getting your Targets to execute when you want is to combine th
 </ItemGroup>
 ```
 
-# Reference
+# Documentation
 
-## Learning and HOWTOs
+## Learning
 
 * [Extend the build process](https://learn.microsoft.com/en-us/visualstudio/msbuild/how-to-extend-the-visual-studio-build-process)
   * This page is a super helpful primer on how to write custom targets.
@@ -149,3 +149,5 @@ The main trick to getting your Targets to execute when you want is to combine th
 * [Task Reference](https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild-task-reference)
   * List of Task-type elements and their parameters
 * [Target Element](https://learn.microsoft.com/en-us/visualstudio/msbuild/target-element-msbuild)
+* [Choose Element](https://learn.microsoft.com/en-us/visualstudio/msbuild/choose-element-msbuild)
+  * conditional execution
