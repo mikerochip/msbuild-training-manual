@@ -96,6 +96,48 @@ The main trick to getting your Targets to execute when you want is to combine th
 * The `$` symbol evaluates a property into its value (like a shell script)
 * The `@` symbol returns the elements of an ItemGroup property (which are multi-value data containers)
 
+# HOWTOs
+
+#### Copy files from an external data folder
+```
+<!-- put your source folder in a top-level PropertyGroup so you can set it as a parameter -->
+<PropertyGroup>
+    <MySourceDataPath>..\..\MyData</MySourceDataPath>
+</PropertyGroup>
+
+<Target Name="CopyMyData" AfterTargets="Build">
+  <!-- $(OutputPath) is only valid inside a Target -->
+  <PropertyGroup>
+      <MyOutputDataPath>$(OutputPath)MyData</MyOutputDataPath>
+  </PropertyGroup>
+  
+  <!-- delete your previous dir since source data files may have changed -->
+  <RemoveDir Directories="$(MyOutputDataPath)" />
+  
+  <!-- this could be outside the Target -->
+  <ItemGroup>
+      <MySourceDataFiles Include="$(MySourceDataPath)\**\*.*" />
+  </ItemGroup>
+  
+  <Copy SourceFiles="@(MySourceDataFiles)"
+        DestinationFolder="$(MyOutputDataPath)\%(RecursiveDir)" />
+</Target>
+```
+
+#### Include a data directory as reference in your IDE (and exclude from builds)
+```
+<!-- put your source folder in a top-level PropertyGroup so you can set it as a parameter -->
+<PropertyGroup>
+    <MyDataPath>MyData</MyDataPath>
+</PropertyGroup>
+
+<ItemGroup>
+    <!-- if MySourceDataPath is inside your project, then this removes it -->
+    <Content Remove="$(MyDataPath)\**" />
+    <None LinkBase="FolderNameInIDE" Include="$(MyDataPath)\**" />
+</ItemGroup>
+```
+
 # Reference
 
 ## Learning and HOWTOs
